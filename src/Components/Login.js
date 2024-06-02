@@ -6,6 +6,7 @@ import { auth } from "../Utils/Firebase";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../Utils/userSlice';
+import { BACKGROUND_IMAGE } from '../Utils/constants';
 
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
@@ -34,15 +35,14 @@ const Login = () => {
                     const user = userCredential.user;
                     updateProfile(user, {
                         displayName: name.current.value
-                      }).then(() => {
-                        const {uid, email, displayName} = user;
-                        dispatch(addUser({uid: uid, email: email, displayName: displayName}));
-                        navigate("/browse");
-                      }).catch((error) => {
+                    }).then(() => {
+                        const { uid, email, displayName } = user;
+                        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+                    }).catch((error) => {
                         // An error occurred
                         // ...
-                      });
-                    
+                    });
+
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -54,7 +54,6 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    navigate("/browse");
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -69,7 +68,7 @@ const Login = () => {
         <div>
             <Header />
             <div className='absolute'>
-                <img className='w-fit' src="https://assets.nflxext.com/ffe/siteui/vlv3/dd4dfce3-1a39-4b1a-8e19-b7242da17e68/86742114-c001-4800-a127-c9c89ca7bbe4/IN-en-20240527-popsignuptwoweeks-perspective_alpha_website_large.jpg" alt="banner-image" />
+                <img className='w-fit' src={BACKGROUND_IMAGE} alt="banner-image" />
             </div>
 
             <form onSubmit={(e) => e.preventDefault()} className='p-8 relative w-3/12 top-[30vh] left-[36vw] bg-black text-white bg-opacity-80'>
