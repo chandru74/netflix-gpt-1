@@ -5,11 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../Utils/userSlice';
 import { LOGO, PROFILE_AVATAR } from '../Utils/constants';
+import { toggleGPTSearch } from '../Utils/gptSlice';
 
 const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector(store => store.user);
+    const showGPTSearch = useSelector(store => store.gpt.showGPTSearch);
     const handleSignOut = () => {
         signOut(auth).then(() => {
             navigate("/")
@@ -34,15 +36,24 @@ const Header = () => {
         });
         return () => unsubscribe();
     }, [])
+
+    const handleGPTClick = () => {
+        dispatch(toggleGPTSearch());
+    }
+
     return (
         <div className='w-full absolute bg-gradient-to-b from-black z-50 flex justify-between'>
             <div>
-                <img className='w-40 mx-16 my-5 ' src={LOGO} alt="logo" />
+                <img className='w-32 md:w-40 md:mx-16 my-4' src={LOGO} alt="logo" />
             </div>
-            {user && <div className='w-56 m-4 p-4 flex'>
-                <img src={PROFILE_AVATAR} alt="profile icon" />
-                <button className='mx-2 font-bold text-white' onClick={handleSignOut}>(Sign out)</button>
-            </div>}
+
+            {user &&
+                <div className='m-4 md:p-4 flex'>
+                    <button className='md:px-4 bg-red-800  md:mx-2  text-white rounded-lg md:w-36 w-24 my-2 md:my-0'
+                        onClick={handleGPTClick}>{showGPTSearch ? "Home" : "GPT Search"}</button>
+                    <img className='hidden md:block' src={PROFILE_AVATAR} alt="profile icon" />
+                    <button className='mx-2 font-bold text-white w-20' onClick={handleSignOut}>(Sign out)</button>
+                </div>}
 
         </div>
     );
