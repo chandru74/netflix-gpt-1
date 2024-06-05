@@ -4,11 +4,11 @@ import movieReducer from "./movieSlice";
 import gptReducer from "./gptSlice";
 
 const appStore = configureStore({
-    reducer: {
-        user: userReducer,
-        movie: movieReducer,
-        gpt: gptReducer,
-    }
-})
+  reducer: {
+    user: userReducer,
+    movie: movieReducer,
+    gpt: gptReducer,
+  },
+});
 
 export default appStore;
