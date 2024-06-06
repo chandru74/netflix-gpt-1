@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { API_OPTION, IMG_CDN } from "../Utils/constants";
+import React, { useState } from "react";
+import { IMG_CDN } from "../Utils/constants";
 import MovieInfoModal from "./MovieInfoModal";
 import { useDispatch } from "react-redux";
 import { setSelectedMovie } from "../Utils/movieSlice";

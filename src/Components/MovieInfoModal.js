@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API_OPTION, IMG_CDN, IMG_CDN_ORIGINAL } from "../Utils/constants";
+import { API_OPTION, IMG_CDN} from "../Utils/constants";
 
 const MovieInfoModal = ({ isOpen, onClose, movie }) => {
   const [movieInfo, setMovieInfo] = useState(null);
@@ -7,6 +7,7 @@ const MovieInfoModal = ({ isOpen, onClose, movie }) => {
     if (isOpen) {
       getMovieDetails();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const getMovieDetails = async () => {
