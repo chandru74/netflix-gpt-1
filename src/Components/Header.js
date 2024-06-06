@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../Utils/userSlice";
 import { LOGO, PROFILE_AVATAR } from "../Utils/constants";
 import { toggleGPTSearch } from "../Utils/gptSlice";
+import { setSelectedMovie } from "../Utils/movieSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ const Header = () => {
 
   const handleGPTClick = () => {
     dispatch(toggleGPTSearch());
+    dispatch(setSelectedMovie(null))
   };
 
   return (

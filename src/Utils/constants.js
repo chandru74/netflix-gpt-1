@@ -16,6 +16,7 @@ export const API_OPTION = {
 };
 
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500/";
+export const IMG_CDN_ORIGINAL = "https://image.tmdb.org/t/p/original/";
 
 export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
 

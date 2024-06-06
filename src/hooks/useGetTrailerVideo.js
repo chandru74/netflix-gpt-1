@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addTrailerVideo } from "../Utils/movieSlice";
 import { API_OPTION } from "../Utils/constants";
 
-const useGetTrailerVideo = (movieId) => {
+const useGetTrailerVideo = (movieId) => {console.log(movieId);
   const dispatch = useDispatch();
   const getMovieVideo = async () => {
     const data = await fetch(
@@ -22,7 +22,7 @@ const useGetTrailerVideo = (movieId) => {
   useEffect(() => {
     getMovieVideo();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [movieId]);
 };
 
 export default useGetTrailerVideo;
